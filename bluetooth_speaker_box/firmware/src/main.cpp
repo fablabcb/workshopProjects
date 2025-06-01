@@ -3,15 +3,15 @@
 #include <Arduino.h>
 
 // Button GPIO pins
-#define BUTTON_PLAY_PAUSE 18
-#define BUTTON_PREVIOUS 5
-#define BUTTON_NEXT 17
-#define BUTTON_VOLUME_UP 4
-#define BUTTON_VOLUME_DOWN 16
+#define BUTTON_PLAY_PAUSE 19
+#define BUTTON_PREVIOUS 18
+#define BUTTON_NEXT 5
+#define BUTTON_VOLUME_UP 16
+#define BUTTON_VOLUME_DOWN 17
 
-#define I2S_LRC 14
-#define I2S_BCLK 27
-#define I2S_DIN 26
+#define I2S_LRC 25
+#define I2S_BCLK 26
+#define I2S_DIN 27
 
 // I2S and Bluetooth sink
 I2SStream i2s;
