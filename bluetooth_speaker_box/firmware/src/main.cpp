@@ -2,6 +2,8 @@
 #include "BluetoothA2DPSink.h"
 #include <Arduino.h>
 
+#define DEVICE_NAME "FabLab BT Speaker"
+
 // Button GPIO pins
 #define BUTTON_PLAY_PAUSE 19
 #define BUTTON_PREVIOUS 18
@@ -46,7 +48,7 @@ void setup()
     i2s.begin(cfg);
 
     // Start Bluetooth sink
-    a2dp_sink.start("ESPEAKER");
+    a2dp_sink.start(DEVICE_NAME);
     a2dp_sink.set_volume(64);
 }
 
@@ -100,7 +102,7 @@ void loop()
         int louder = a2dp_sink.get_volume();
         if(louder < 100)
         {
-            louder += 1;
+            louder = std::min(100, louder+5);
             a2dp_sink.set_volume(louder);
         }
         Serial.println("Volume Up Button Pressed");
@@ -113,7 +115,7 @@ void loop()
         int silenter = a2dp_sink.get_volume();
         if(silenter > 0)
         {
-            silenter -= 1;
+            silenter = std::max(0, silenter-5);
             a2dp_sink.set_volume(silenter);
         }
         Serial.println("Volume Down Button Pressed");
